@@ -19,6 +19,7 @@
  * @left: Pointer to the left child node
  * @right: Pointer to the right child node
  */
+
 struct binary_tree_s
 {
     int n;
@@ -38,5 +39,8 @@ void binary_tree_print(const binary_tree_t *tree);
 
 /*== 0-binary_tree_node.c ==*/
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
+
+/*== 2-binary_tree_insert_right.c ==*/
+binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);
 
 #endif
