@@ -35,6 +35,7 @@ int binary_tree_balance(const binary_tree_t *tree)
 size_t binary_tree_height(const binary_tree_t *tree)
 {
 	size_t hl = 0, hr = 0, max = 0;
+
 	if (tree)
 	{
 		if (tree->left)
@@ -43,5 +44,5 @@ size_t binary_tree_height(const binary_tree_t *tree)
 			hr = binary_tree_height(tree->right) + 1;
 		max = hl >= hr ? hl : hr;
 	}
-	return max;
+	return (max);
 }
