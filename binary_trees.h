@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/_types/_size_t.h>
 
 
 
@@ -22,10 +23,10 @@
 
 struct binary_tree_s
 {
-    int n;
-    struct binary_tree_s *parent;
-    struct binary_tree_s *left;
-    struct binary_tree_s *right;
+	int n;
+	struct binary_tree_s *parent;
+	struct binary_tree_s *left;
+	struct binary_tree_s *right;
 };
 
 typedef struct binary_tree_s binary_tree_t;
@@ -89,7 +90,14 @@ int binary_tree_balance(const binary_tree_t *tree);
 /*== 15-binary_tree_is_full.c ==*/
 int binary_tree_is_full(const binary_tree_t *tree);
 
+/*== 16-binary_tree_is_perfect.c ==*/
+int binary_tree_is_perfect(const binary_tree_t *tree);
+int perfect(const binary_tree_t *tree, size_t height, size_t level);
+
 /*== 17-binary_tree_sibling.c ==*/
 binary_tree_t *binary_tree_sibling(binary_tree_t *node);
+
+/*== 18-binary_tree_uncle.c ==*/
+binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
 #endif
