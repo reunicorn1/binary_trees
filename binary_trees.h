@@ -48,6 +48,34 @@ typedef struct link_s
 	struct link_s *next;
 } link_t;
 
+/**
+ * struct queue_node - doubly linked list representation of a stack (or queue)
+ * @data: A binary tree element
+ * @next: points to the next element of the stack (or queue)
+ *
+ * Description: doubly linked list node structure
+ * for stack, queues, LIFO, FIFO
+ 
+typedef struct queue_node
+{
+	binary_tree_t *data;
+	struct queue_node *next;
+} queue_node_t;
+
+
+ * struct queue_t - doubly linked list representation of a stack (or queue)
+ * @front: Pointer to the front of the queue
+ * @rear: Pointer to the rear of the queue
+ *
+ * Description: doubly linked list node structure
+ * for stack, queues, LIFO, FIFO
+ 
+
+typedef struct {
+    queue_node_t *front;
+    queue_node_t *rear;
+} queue_t;
+*/
 
 /*________ Function Prototypes ________*/
 
@@ -56,8 +84,6 @@ void binary_tree_print(const binary_tree_t *tree);
 
 /*== 0-binary_tree_node.c ==*/
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
-
-
 
 /*== 1-binary_tree_insert_left.c ==*/
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
@@ -123,8 +149,18 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 void levelorder(const binary_tree_t *tree, size_t level, void (*func)(int));
 
+
 /*== 102-binary_tree_is_complete.c ==*/
 int binary_tree_is_complete(const binary_tree_t *tree);
+
+/*== 101-levelorder_queue.c ==
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
+void levelorder(const binary_tree_t *tree, size_t level, void (*func)(int));
+void enqueue(queue_t *queue, const binary_tree_t *data);
+binary_tree_t *dequeue(queue_t *queue);
+void freeAll(queue_t *queue);
+queue_t *createQueue(void);
+*/
 
 /*== 103-binary_tree_rotate_left.c ==*/
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
