@@ -11,57 +11,118 @@
 
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-	size_t height, i;
+	queue_t *queue = createQueue();
+	binary_tree_t *node;
 
-	height = binary_tree_height(tree);
-	for (i = 0; i <= height; i++)
-		levelorder(tree, i, func);
+	if (tree && func)
+	{
+		enqueue(queue, tree);
+		while (!isEmpty(queue))
+		{
+			node = dequeue(queue);
+			if (node)
+			{
+				func(node->n);
+				enqueue(queue, node->left);
+				enqueue(queue, node->right);
+			}
+		}
+	}
+	freeAll(queue);
 }
 
 /**
- * levelorder - This function goes through the binary tree using
- *		level-order traversal
- * @tree: Pointer to the root node of the tree to traverse
- * @level: the level of the current node relative to the root
- * @func: a pointer to a function to call for each node.
+ * enqueue - adds a new node to the queue
+ * @queue: a pointer to the head pf the list
+ * @data: the data to be inserted into the node
  *
  * Return: Nothing.
  */
 
-void levelorder(const binary_tree_t *tree, size_t level, void (*func)(int))
+void enqueue(queue_t *queue, const binary_tree_t *data)
 {
-	if (tree)
-	{
-		if (level == 0)
-			func(tree->n);
-		else
-		{
-			levelorder(tree->left, level - 1, func);
-			levelorder(tree->right, level - 1, func);
-		}
+	queue_t_node *newNode = (queue_t_node *)malloc(sizeof(queue_t_node));
+	if (newNode == NULL) {
+		exit(EXIT_FAILURE);
+	}
+	newNode->data = (binary_tree_t*) data;
+	newNode->next = NULL;
+	if (isEmpty(queue)) {
+		queue->front = newNode;
+		queue->rear = newNode;
+	} else {
+		queue->rear->next = newNode;
+		queue->rear = newNode;
 	}
 }
 
 /**
- * binary_tree_height - a function that measures the height of a binary tree
- * @tree:  is a pointer to the root node of the tree to measure the height.
- * Return: If tree is NULL, your function must return 0 else height of tree
+ * dequeue - removed the top element of the stack
+ * @queue: a pointer to the head of the list
+ *
+ * Return: the node that was stored.
  */
 
-size_t binary_tree_height(const binary_tree_t *tree)
+binary_tree_t *dequeue(queue_t *queue)
 {
-	size_t hl = 0, hr = 0;
+	binary_tree_t *data;
+	queue_t_node *temp;
 
-	if (!tree)
-		return (0);
+	if (isEmpty(queue))
+		return (NULL);
 
-	if (tree->left)
-	{
-		hl = binary_tree_height(tree->left) + 1;
-	}
-	if (tree->right)
-	{
-		hr = binary_tree_height(tree->right) + 1;
-	}
-	return (hl > hr ? hl : hr);
+	data = queue->front->data;
+	temp = queue->front;
+	queue->front = queue->front->next;
+	free(temp);
+	return (data);
+}
+
+/**
+ * freeAll_and_exit - frees all allocated memory in cases of failure and exits
+ * @queue: a pointer to the head of the stack
+ *
+ * Return: Nothing.
+ */
+void freeAll(queue_t *queue)
+{
+	    queue_t_node *current, *temp;
+
+	    current = queue->front;
+	    while (current != NULL)
+	    {
+		    temp = current;
+		    current = current->next;
+		    free(temp);
+	    }
+	    free(queue);
+}
+
+/**
+ * createQueue - This function creates a new queue
+ *
+ * Return: The queue.
+ */
+
+queue_t *createQueue(void)
+{
+	queue_t *queue = (queue_t *)malloc(sizeof(queue_t));
+	if (queue == NULL)
+		exit(EXIT_FAILURE);
+	queue->front = NULL;
+	queue->rear = NULL;
+	return queue;
+}
+
+/**
+ * isEmpty - This function checks if the queue is empty
+ *
+ * @queue: The queue to be checked
+ *
+ * return: 1 or 0
+ */
+
+int isEmpty(queue_t *queue)
+{
+	return (queue->front == NULL);
 }
