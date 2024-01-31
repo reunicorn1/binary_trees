@@ -34,22 +34,21 @@ typedef struct binary_tree_s heap_t;
 
 
 /**
- * struct queue_s - doubly linked list representation of a stack (or queue)
+ * struct queue_node - doubly linked list representation of a stack (or queue)
  * @node: A binary tree element
  * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
  */
-struct queue_s
+typedef struct queue_node
 {
 	binary_tree_t *data;
-	struct queue_s *next;
-};
-typedef struct queue_s queue_t_node;
+	struct queue_node *next;
+} queue_node_t;
 
 /**
- * struct queue_s - doubly linked list representation of a stack (or queue)
+ * struct queue_t - doubly linked list representation of a stack (or queue)
  * @node: A binary tree element
  * @next: points to the next element of the stack (or queue)
  *
@@ -58,8 +57,8 @@ typedef struct queue_s queue_t_node;
  */
 
 typedef struct {
-    queue_t_node *front;    // Pointer to the front of the queue
-    queue_t_node *rear;     // Pointer to the rear of the queue
+    queue_node_t *front;    // Pointer to the front of the queue
+    queue_node_t *rear;     // Pointer to the rear of the queue
 } queue_t;
 
 /*________ Function Prototypes ________*/
@@ -134,7 +133,6 @@ void enqueue(queue_t *queue, const binary_tree_t *data);
 binary_tree_t *dequeue(queue_t *queue);
 void freeAll(queue_t *queue);
 queue_t *createQueue(void);
-int isEmpty(queue_t *queue);
 
 /*== 103-binary_tree_rotate_left.c ==*/
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);

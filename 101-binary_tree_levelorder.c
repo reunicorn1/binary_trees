@@ -17,7 +17,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	if (tree && func)
 	{
 		enqueue(queue, tree);
-		while (!isEmpty(queue))
+		while (queue->front)
 		{
 			node = dequeue(queue);
 			if (node)
@@ -41,16 +41,19 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 
 void enqueue(queue_t *queue, const binary_tree_t *data)
 {
-	queue_t_node *newNode = (queue_t_node *)malloc(sizeof(queue_t_node));
-	if (newNode == NULL) {
+	queue_node_t *newNode = (queue_node_t *)malloc(sizeof(queue_node_t));
+
+	if (newNode == NULL)
 		exit(EXIT_FAILURE);
-	}
-	newNode->data = (binary_tree_t*) data;
+	newNode->data = (binary_tree_t *) data;
 	newNode->next = NULL;
-	if (isEmpty(queue)) {
+	if (!queue->front)
+	{
 		queue->front = newNode;
 		queue->rear = newNode;
-	} else {
+	}
+	else
+	{
 		queue->rear->next = newNode;
 		queue->rear = newNode;
 	}
@@ -66,9 +69,9 @@ void enqueue(queue_t *queue, const binary_tree_t *data)
 binary_tree_t *dequeue(queue_t *queue)
 {
 	binary_tree_t *data;
-	queue_t_node *temp;
+	queue_node_t *temp;
 
-	if (isEmpty(queue))
+	if (!queue->front)
 		return (NULL);
 
 	data = queue->front->data;
@@ -79,23 +82,23 @@ binary_tree_t *dequeue(queue_t *queue)
 }
 
 /**
- * freeAll_and_exit - frees all allocated memory in cases of failure and exits
+ * freeAll - frees all allocated memory in cases of failure and exits
  * @queue: a pointer to the head of the stack
  *
  * Return: Nothing.
  */
 void freeAll(queue_t *queue)
 {
-	    queue_t_node *current, *temp;
+	queue_node_t *current, *temp;
 
-	    current = queue->front;
-	    while (current != NULL)
-	    {
-		    temp = current;
-		    current = current->next;
-		    free(temp);
-	    }
-	    free(queue);
+	current = queue->front;
+	while (current != NULL)
+	{
+		temp = current;
+		current = current->next;
+		free(temp);
+	}
+	free(queue);
 }
 
 /**
@@ -107,22 +110,10 @@ void freeAll(queue_t *queue)
 queue_t *createQueue(void)
 {
 	queue_t *queue = (queue_t *)malloc(sizeof(queue_t));
+
 	if (queue == NULL)
 		exit(EXIT_FAILURE);
 	queue->front = NULL;
 	queue->rear = NULL;
-	return queue;
-}
-
-/**
- * isEmpty - This function checks if the queue is empty
- *
- * @queue: The queue to be checked
- *
- * return: 1 or 0
- */
-
-int isEmpty(queue_t *queue)
-{
-	return (queue->front == NULL);
+	return (queue);
 }
