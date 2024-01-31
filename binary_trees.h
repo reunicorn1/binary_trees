@@ -28,8 +28,10 @@ struct binary_tree_s
 	struct binary_tree_s *left;
 	struct binary_tree_s *right;
 };
-
 typedef struct binary_tree_s binary_tree_t;
+typedef struct binary_tree_s bst_t;
+typedef struct binary_tree_s avl_t;
+typedef struct binary_tree_s heap_t;
 
 
 
@@ -99,5 +101,13 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 
 /*== 18-binary_tree_uncle.c ==*/
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
+
+/*== 101-binary_tree_levelorder.c ==*/
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
+void levelorder(const binary_tree_t *tree, size_t level, void (*func)(int));
+
+/*== 103-binary_tree_rotate_left.c ==*/
+binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
+void rotate_parent(binary_tree_t *tree, binary_tree_t *parent);
 
 #endif
