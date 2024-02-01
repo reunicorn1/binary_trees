@@ -156,4 +156,26 @@ void rotate_parent(binary_tree_t *tree, binary_tree_t *parent);
 /*== 104-binary_tree_rotate_right.c ==*/
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 
+/*== 111-bst_insert.c ==*/
+bst_t *bst_insert(bst_t **tree, int value);
+
+/*== 113-bst_search.c ==*/
+bst_t *bst_search(const bst_t *tree, int value);
+
+/*== 121-avl_insert.c ==*/
+avl_t *avl_insert(avl_t **tree, int value);
+
+/*== 123-avl_remove.c ==*/
+avl_t *avl_remove(avl_t *root, int value);
+
+/*== 131-heap_insert.c ==*/
+heap_t *heap_insert(heap_t **root, int value);
+
+/*== 133-heap_extract.c==*/
+int heap_extract(heap_t **root);
+
+
+
+
+
 #endif
