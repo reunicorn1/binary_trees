@@ -30,10 +30,7 @@ int is_bst(const binary_tree_t *tree, int min, int max)
 	if (tree)
 	{
 		if (tree->n < min || tree->n > max)
-		{
-			printf(" this value is not correct = %d\n, in relation to min = %d and max %d\n", tree->n, min, max);
 			return (0);
-		}
 		else
 			return (is_bst(tree->left, min, tree->n - 1) &&
 				is_bst(tree->right, tree->n + 1, max));
