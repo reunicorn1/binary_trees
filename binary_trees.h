@@ -32,7 +32,6 @@ typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
 
-
 /**
  * struct queue_node - doubly linked list representation of a stack (or queue)
  * @data: A binary tree element
@@ -127,9 +126,19 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 /*== 18-binary_tree_uncle.c ==*/
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
+/*== 100-binary_trees_ancestor.c ==*/
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);
+
 /*== 101-binary_tree_levelorder.c ==*/
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 void levelorder(const binary_tree_t *tree, size_t level, void (*func)(int));
+
+
+/*== 102-binary_tree_is_complete.c ==*/
+int binary_tree_is_complete(const binary_tree_t *tree);
+int countNodes(const binary_tree_t *tree);
+int binary_tree_is(const binary_tree_t *tree, int index, int num_nodes);
+
 
 /*== 101-levelorder_queue.c ==
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
@@ -143,6 +152,9 @@ queue_t *createQueue(void);
 /*== 103-binary_tree_rotate_left.c ==*/
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
 void rotate_parent(binary_tree_t *tree, binary_tree_t *parent);
+
+/*== 104-binary_tree_rotate_right.c ==*/
+binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 
 /*== 110-binary_tree_is_bst.c ==*/
 int binary_tree_is_bst(const binary_tree_t *tree);
