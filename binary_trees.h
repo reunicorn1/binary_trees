@@ -32,22 +32,6 @@ typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
 
-/* structure for complete binary tree task. 102 */
-
-/**
- * struct link_s - structure for advanced tasks
- *
- * @n: depth of node specified
- * @node: node of tree to store
- * @next: next node of the linked list
- */
-typedef struct link_s
-{
-	size_t n;
-	struct binary_tree_s const *node;
-	struct link_s *next;
-} link_t;
-
 /**
  * struct queue_node - doubly linked list representation of a stack (or queue)
  * @data: A binary tree element
@@ -152,6 +136,9 @@ void levelorder(const binary_tree_t *tree, size_t level, void (*func)(int));
 
 /*== 102-binary_tree_is_complete.c ==*/
 int binary_tree_is_complete(const binary_tree_t *tree);
+int countNodes(const binary_tree_t *tree);
+int binary_tree_is(const binary_tree_t *tree, int index, int num_nodes);
+
 
 /*== 101-levelorder_queue.c ==
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
