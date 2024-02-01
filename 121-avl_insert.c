@@ -39,7 +39,8 @@ bst_t *r_bst_insert(bst_t **tree, int value)
 
 
 /**
- * binary_tree_rotate_left_right - Performs a left-right rotation on a binary tree.
+ * binary_tree_rotate_left_right - Performs a left-right
+ * rotation on a binary tree.
  *
  * @tree: Pointer to the root node of the tree to rotate.
  * Return: A pointer to the new root node of the tree once rotated.
@@ -51,12 +52,13 @@ binary_tree_t *binary_tree_rotate_left_right(binary_tree_t *tree)
 		return (NULL);
 
 	tree->left = binary_tree_rotate_left(tree->left);
-	return binary_tree_rotate_right(tree);
+	return (binary_tree_rotate_right(tree));
 
 }
 
 /**
- * binary_tree_rotate_right_left - Performs a right-left rotation on a binary tree.
+ * binary_tree_rotate_right_left - Performs a right-left
+ * rotation on a binary tree.
  *
  * @tree: Pointer to the root node of the tree to rotate.
  * Return: A pointer to the new root node of the tree once rotated.
@@ -67,23 +69,27 @@ binary_tree_t *binary_tree_rotate_right_left(binary_tree_t *tree)
 		return (NULL);
 
 	tree->right = binary_tree_rotate_right(tree->right);
-	return binary_tree_rotate_left(tree);
+	return (binary_tree_rotate_left(tree));
 
 }
 
 /**
  * avl_insert - Inserts a value into an AVL Tree.
  *
- * @tree: Double pointer to the root node of the AVL tree for inserting the value.
- *        If the address stored in tree is NULL, the created node must become the root node.
+ * @tree: Double pointer to the root node of the AVL tree
+ * for inserting the value.
+ *        If the address stored in tree is NULL,
+ *        the created node must become the root node.
  * @value: The value to store in the node to be inserted.
  *
  * Return: A pointer to the created node, or NULL on failure.
  * Description:
  * - Inserts a new node into the AVL tree based on the given value.
- * - If the address stored in tree is NULL, the created node becomes the root of the tree.
+ * - If the address stored in tree is NULL, the created node
+ *   becomes the root of the tree.
  * - The resulting tree after insertion must be a balanced AVL Tree.
- * - Balancing AVL tree involves performing rotations (right, left, right-left, left-right) as needed.
+ * - Balancing AVL tree involves performing rotations
+ *   (right, left, right-left, left-right) as needed.
  */
 
 avl_t *avl_insert(avl_t **tree, int value)
