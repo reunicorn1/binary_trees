@@ -170,4 +170,10 @@ bst_t *array_to_bst(int *array, size_t size);
 /*== 113-bst_search.c ==*/
 bst_t *bst_search(const bst_t *tree, int value);
 
+/*== 114-bst_remove.c ==*/
+bst_t *bst_remove(bst_t *root, int value);
+void switching(bst_t *a, bst_t *b);
+bst_t *min_node(bst_t *node);
+bst_t *remove_node(bst_t *root, bst_t *node);
+
 #endif
