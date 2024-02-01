@@ -176,4 +176,8 @@ bst_t *min_node(bst_t *node);
 bst_t *remove_node(bst_t *root, bst_t *node);
 void switch_node(bst_t *a, bst_t *b);
 
+/*== 120-binary_tree_is_avl.c ==*/
+int binary_tree_is_avl(const binary_tree_t *tree);
+int is_avl(const binary_tree_t *tree);
+
 #endif
