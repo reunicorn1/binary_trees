@@ -167,4 +167,7 @@ bst_t *insert_to_bst(bst_t **tree, int value, int min, int max);
 /*== 112-array_to_bst.c ==*/
 bst_t *array_to_bst(int *array, size_t size);
 
+/*== 113-bst_search.c ==*/
+bst_t *bst_search(const bst_t *tree, int value);
+
 #endif
