@@ -180,4 +180,14 @@ void switch_node(bst_t *a, bst_t *b);
 int binary_tree_is_avl(const binary_tree_t *tree);
 int is_avl(const binary_tree_t *tree);
 
+/*== 122-array_to_avl.c ==*/
+avl_t *array_to_avl(int *array, size_t size);
+
+/*== 124-sorted_array_to_avl.c ==*/
+avl_t *sorted_array_to_avl(int *array, size_t size);
+
+/*== 124-sorted_array_to_avl.c ==*/
+avl_t *sorted_array_to_avl(int *array, size_t size);
+void sorted_avl(avl_t **root, int *array, int min, int max);
+
 #endif
