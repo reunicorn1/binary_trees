@@ -40,33 +40,28 @@ bst_t *remove_node(bst_t *root, bst_t *node)
 			node->parent->left = NULL;
 		else
 			node->parent->right = NULL;
+		free(node);
+		return (root);
 	}
 	else if (node->left && !node->right)
 	{
-		if (root == node)
-			root = node->left;
 		tmp = node->left;
-		switching(node, tmp);
-		tmp->left = NULL;
+		switch_node(node, tmp);
+		node->left = NULL;
 	}
 	else if (node->right && !node->left)
 	{
-		if (root == node)
-			root = node->right;
 		tmp = node->right;
-		switching(node, tmp);
-		tmp->right = NULL;
+		switch_node(node, tmp);
+		node->right = NULL;
 	}
 	else
 	{
 		tmp = min_node(node->right);
-		if (root == node)
-			root = tmp;
-		printf("%d\n", tmp->n);
-		switching(node, tmp);
-		return (remove_node(root, node));
+		switch_node(node, tmp);
+		return (remove_node(root, tmp));
 	}
-	free(node);
+	free(tmp);
 	return (root);
 }
 
@@ -84,55 +79,18 @@ bst_t *min_node(bst_t *node)
 	return (node);
 }
 
-
 /**
- * switching - This function switches between two nodes in the tree
+ * switch_node - This function switches between two nodes in the tree
  * @a: A Pointer to the first node to be switched
  * @b: A pointer to the second node to be switched
  *
  * Return: Nothing
  */
-void switching(bst_t *a, bst_t *b)
+void switch_node(bst_t *a, bst_t *b)
 {
-	bst_t *parenta, *parentb, *lefta, *leftb, *righta, *rightb;
-
-	if (!a || !b)
-		return;
-	parenta = a->parent;
-	parentb = b->parent;
-	lefta = a->left;
-	righta = a->right;
-	leftb = b->left;
-	rightb = b->right;
-
-	if (lefta)
-		lefta->parent = b;
-	if (righta)
-		righta->parent = b;
-	if (leftb)
-		leftb->parent = a;
-	if (rightb)
-		rightb->parent = a;
-	if (parenta)
-	{
-		if (parenta->left == a)
-			parenta->left = b;
-		else
-			parenta->right = b;
-	}
-	if (parentb)
-	{
-		if (parentb->left == b)
-			parentb->left = a;
-		else
-			parentb->right = a;
-	}
-	a->parent = parentb;
-	b->parent = parenta;
-	a->left = leftb;
-	a->right = rightb;
-	b->left = lefta;
-	b->right = righta;
+	a->n = a->n ^ b->n;
+	b->n = a->n ^ b->n;
+	a->n = a->n ^ b->n;
 }
 
 
