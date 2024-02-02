@@ -91,20 +91,6 @@ bst_t *min_node(bst_t *node)
 	return (node);
 }
 
-/**
- * switch_node - This function switches between two nodes in the tree
- * @a: A Pointer to the first node to be switched
- * @b: A pointer to the second node to be switched
- *
- * Return: Nothing
- */
-void switch_node(bst_t *a, bst_t *b)
-{
-	a->n = a->n ^ b->n;
-	b->n = a->n ^ b->n;
-	a->n = a->n ^ b->n;
-}
-
 
 /**
  * successor - min node of the right subtree
