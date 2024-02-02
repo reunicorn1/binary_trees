@@ -11,10 +11,21 @@
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	avl_t *root = NULL;
+	int min = 0, max = size - 1, middle;
 
 	if (array)
-		sorted_avl(&root, array, 0, (int)size - 1);
-	return (root);
+	{
+		while (min <= max)
+		{
+			int middle = ((max - min) / 2) + min;
+			bst_insert(&root, array[middle]);
+
+			if (middle - 1 >= min)
+				max = middle - 1;
+			if (middle + 1 <= max)
+				min = middle + 1;
+		}
+	}	return (root);
 }
 
 /**

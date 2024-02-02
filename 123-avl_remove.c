@@ -91,6 +91,7 @@ int delete_case(bst_t *root)
 		return (new_value);
 	}
 }
+
 /**
  * bst_remove - remove a node from a BST tree
  * @root: root of the tree
