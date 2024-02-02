@@ -177,7 +177,6 @@ bst_t *bst_search(const bst_t *tree, int value);
 bst_t *bst_remove(bst_t *root, int value);
 bst_t *min_node(bst_t *node);
 bst_t *remove_node(bst_t *root, bst_t *node);
-void switch_node(bst_t *a, bst_t *b);
 int delete_case(bst_t *root);
 int successor(bst_t *node);
 
@@ -211,6 +210,8 @@ heap_t *array_to_heap(int *array, size_t size);
 
 /*== 133-heap_extract.c==*/
 int heap_extract(heap_t **root);
+void switch_node(heap_t **a, heap_t **b);
+int step_down(heap_t **root);
 
 /*== 134-heap_to_sorted_array.c ==*/
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
