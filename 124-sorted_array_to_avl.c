@@ -1,5 +1,6 @@
 #include "binary_trees.h"
 
+
 /**
  * sorted_array_to_avl - This function  builds an AVL Tree from a sorted array
  * @array: A pointer to the first element of the array to be converted
@@ -8,24 +9,13 @@
  * Return: A pointer to the created AVL, or NULL in failure
  */
 
-avl_t *sorted_array_to_avl(int *array, size_t size)
-{
-	avl_t *root = NULL;
-	int min = 0, max = size - 1, middle;
+ avl_t *sorted_array_to_avl(int *array, size_t size)
+ {
+ 	avl_t *root = NULL;
 
-	if (array)
-	{
-		while (min <= max)
-		{
-			int middle = ((max - min) / 2) + min;
-			bst_insert(&root, array[middle]);
-
-			if (middle - 1 >= min)
-				max = middle - 1;
-			if (middle + 1 <= max)
-				min = middle + 1;
-		}
-	}	return (root);
+ 	if (array)
+ 		sorted_avl(&root, array, 0, (int)size - 1);
+ 	return (root);
 }
 
 /**
@@ -40,12 +30,12 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 
 void sorted_avl(avl_t **root, int *array, int min, int max)
 {
-	if (min <= max)
-	{
-		bst_insert(root, array[((max - min) / 2) + min]);
-		sorted_avl(root, array, min, (((max - min) / 2) + min - 1));
-		sorted_avl(root, array, (((max - min) / 2) + min + 1), max);
-	}
+ 	if (min <= max)
+ 	{
+ 		bst_insert(root, array[((max - min) / 2) + min]);
+ 		sorted_avl(root, array, min, (((max - min) / 2) + min - 1));
+ 		sorted_avl(root, array, (((max - min) / 2) + min + 1), max);
+ 	}
 }
 
 /**
@@ -59,17 +49,14 @@ void sorted_avl(avl_t **root, int *array, int min, int max)
 bst_t *bst_insert(bst_t **tree, int value)
 {
 	bst_t *new_node;
-
 	if (!tree)
 		return (NULL);
-
 	if (!(*tree))
 	{
 		new_node = binary_tree_node(NULL, value);
 		*tree = new_node;
 		return (new_node);
 	}
-
 	if (value < (*tree)->n)
 	{
 		if ((*tree)->left)
