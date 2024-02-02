@@ -184,6 +184,9 @@ avl_t *avl_remove(avl_t *root, int value);
 
 /*== 131-heap_insert.c ==*/
 heap_t *heap_insert(heap_t **root, int value);
+void heapify_up(heap_t *node);
+heap_t *find_parent(heap_t *root);
+
 
 /*== 133-heap_extract.c==*/
 int heap_extract(heap_t **root);
