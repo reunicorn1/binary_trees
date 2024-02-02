@@ -11,58 +11,70 @@
 
 bst_t *bst_remove(bst_t *root, int value)
 {
-	bst_t *node, *new_root;
+	int type = 0;
 
-	node = bst_search(root, value);
-	if (!node)
-		return (root);
-	new_root = remove_node(root, node);
-	return (new_root);
+	if (root == NULL)
+		return (NULL);
+	if (value < root->n)
+		bst_remove(root->left, value);
+	else if (value > root->n)
+		bst_remove(root->right, value);
+	else if (value == root->n)
+	{
+		type = delete_case(root);
+		if (type != 0)
+			bst_remove(root->right, type);
+	}
+	else
+		return (NULL);
+	return (root);
 }
 
 /**
- * remove_node - This function removes a node from a Binary Search Tree
- * @root: A Pointer to the root node of the tree to remove its nose
- * @node: A Pointer to the node to be removed
- *
- * Return: A pointer to the new root node of the tree after removal
+ *delete_case - removes a node depending on its children
+ *@root: node to remove
+ *Return: 0 if it has no children or other value if it has
  */
-
-bst_t *remove_node(bst_t *root, bst_t *node)
+int delete_case(bst_t *root)
 {
-	bst_t *tmp;
+	int new_value = 0;
 
-	if (!(!node || node->right || node->left)) /*checks if the node is leaf*/
+	if (!root->left && !root->right)
 	{
-		if (root == node)
-			root = NULL;
-		if (node->parent->left == node)
-			node->parent->left = NULL;
+		if (root->parent->right == root)
+			root->parent->right = NULL;
 		else
-			node->parent->right = NULL;
-		free(node);
-		return (root);
+			root->parent->left = NULL;
+		free(root);
+		return (0);
 	}
-	else if (node->left && !node->right)
+	else if ((!root->left && root->right) || (!root->right && root->left))
 	{
-		tmp = node->left;
-		switch_node(node, tmp);
-		node->left = NULL;
-	}
-	else if (node->right && !node->left)
-	{
-		tmp = node->right;
-		switch_node(node, tmp);
-		node->right = NULL;
+		if (!root->left)
+		{
+			if (root->parent->right == root)
+				root->parent->right = root->right;
+			else
+				root->parent->left = root->right;
+			root->right->parent = root->parent;
+		}
+		if (!root->right)
+		{
+			if (root->parent->right == root)
+				root->parent->right = root->left;
+			else
+				root->parent->left = root->left;
+			root->left->parent = root->parent;
+		}
+		free(root);
+		return (0);
 	}
 	else
 	{
-		tmp = min_node(node->right);
-		switch_node(node, tmp);
-		return (remove_node(root, tmp));
+		new_value = successor(root->right);
+		root->n = new_value;
+		return (new_value);
 	}
-	free(tmp);
-	return (root);
 }
 
 /**
@@ -79,37 +91,28 @@ bst_t *min_node(bst_t *node)
 	return (node);
 }
 
-/**
- * switch_node - This function switches between two nodes in the tree
- * @a: A Pointer to the first node to be switched
- * @b: A pointer to the second node to be switched
- *
- * Return: Nothing
- */
-void switch_node(bst_t *a, bst_t *b)
-{
-	a->n = a->n ^ b->n;
-	b->n = a->n ^ b->n;
-	a->n = a->n ^ b->n;
-}
-
 
 /**
- * bst_search - a function that searches for a value in a Binary Search Tree
- * @tree:  is a pointer to the root node of the BST to search
- * @value: is the value to search in the tree
- * Return:  return a pointer to the node containing a value equals to value
+ * successor - min node of the right subtree
+ * @node: tree to check
+ * Return: the min value of this tree
  */
-
-bst_t *bst_search(const bst_t *tree, int value)
+int successor(bst_t *node)
 {
-	if (!tree)
-		return (NULL);
+	int left = 0;
 
-	if (value == tree->n)
-		return ((bst_t *)tree);
-	else if (value <= tree->n)
-		return (bst_search(tree->left, value));
+	if (node == NULL)
+	{
+		return (0);
+	}
 	else
-		return (bst_search(tree->right, value));
+	{
+		left = successor(node->left);
+		if (left == 0)
+		{
+			return (node->n);
+		}
+		return (left);
+	}
+
 }

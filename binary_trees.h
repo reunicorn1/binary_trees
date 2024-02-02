@@ -157,9 +157,6 @@ void rotate_parent(binary_tree_t *tree, binary_tree_t *parent);
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 
 
-/*== 111-bst_insert.c ==
-bst_t *bst_insert(bst_t **tree, int value);*/
-
 /*== 110-binary_tree_is_bst.c ==*/
 int binary_tree_is_bst(const binary_tree_t *tree);
 int is_bst(const binary_tree_t *tree, int min, int max);
@@ -176,11 +173,34 @@ bst_t *array_to_bst(int *array, size_t size);
 bst_t *bst_search(const bst_t *tree, int value);
 
 
+/*== 114-bst_remove.c ==*/
+bst_t *bst_remove(bst_t *root, int value);
+bst_t *min_node(bst_t *node);
+bst_t *remove_node(bst_t *root, bst_t *node);
+int delete_case(bst_t *root);
+int successor(bst_t *node);
+
+/*== 120-binary_tree_is_avl.c ==*/
+int binary_tree_is_avl(const binary_tree_t *tree);
+int is_avl(const binary_tree_t *tree);
+
 /*== 121-avl_insert.c ==*/
 avl_t *avl_insert(avl_t **tree, int value);
 
+/*== 122-array_to_avl.c ==*/
+avl_t *array_to_avl(int *array, size_t size);
+
 /*== 123-avl_remove.c ==*/
 avl_t *avl_remove(avl_t *root, int value);
+
+/*== 124-sorted_array_to_avl.c ==*/
+avl_t *sorted_array_to_avl(int *array, size_t size);
+void sorted_avl(avl_t **root, int *array, int min, int max);
+
+/*== 130-binary_tree_is_heap.c ==*/
+int binary_tree_is_heap(const binary_tree_t *tree);
+int is_heap(const binary_tree_t *tree);
+int is_heapified(const binary_tree_t *tree);
 
 /*== 131-heap_insert.c ==*/
 heap_t *heap_insert(heap_t **root, int value);
@@ -188,21 +208,15 @@ void heapify_up(heap_t *node);
 heap_t *find_parent(heap_t *root);
 
 
+/*== 132-array_to_heap.c ==*/
+heap_t *array_to_heap(int *array, size_t size);
+
 /*== 133-heap_extract.c==*/
 int heap_extract(heap_t **root);
+void switch_node(heap_t **a, heap_t **b);
+int step_down(heap_t **root);
 
-
-
-
-
-/*== 114-bst_remove.c ==*/
-bst_t *bst_remove(bst_t *root, int value);
-bst_t *min_node(bst_t *node);
-bst_t *remove_node(bst_t *root, bst_t *node);
-void switch_node(bst_t *a, bst_t *b);
-
-/*== 120-binary_tree_is_avl.c ==*/
-int binary_tree_is_avl(const binary_tree_t *tree);
-int is_avl(const binary_tree_t *tree);
+/*== 134-heap_to_sorted_array.c ==*/
+int *heap_to_sorted_array(heap_t *heap, size_t *size);
 
 #endif
