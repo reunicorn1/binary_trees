@@ -209,6 +209,7 @@ int is_heapified(const binary_tree_t *tree);
 heap_t *heap_insert(heap_t **root, int value);
 void heapify_up(heap_t *node);
 heap_t *find_parent(heap_t *root);
+heap_t *siftUp(heap_t **node);
 
 
 /*== 132-array_to_heap.c ==*/
