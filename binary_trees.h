@@ -218,7 +218,11 @@ heap_t *array_to_heap(int *array, size_t size);
 /*== 133-heap_extract.c==*/
 int heap_extract(heap_t **root);
 void switch_node(heap_t **a, heap_t **b);
-int step_down(heap_t **root);
+void _switch_node(heap_t **a, heap_t **b);
+void _enqueue(queue_t *queue, const binary_tree_t *data);
+binary_tree_t *_dequeue(queue_t *queue);
+void _freeAll(queue_t *queue);
+void siftDown(heap_t **node);
 
 /*== 134-heap_to_sorted_array.c ==*/
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
