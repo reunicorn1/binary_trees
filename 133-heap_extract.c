@@ -15,14 +15,18 @@ void _freeAll(queue_t *queue);
 
 int heap_extract(heap_t **root)
 {
-	queue_t *queue = (queue_t *)malloc(sizeof(queue_t));
+	queue_t *queue;
 	heap_t *node;
 	int value;
 
-	if (root && queue && *root)
+	if (root && *root)
 	{
+		queue = (queue_t *)malloc(sizeof(queue_t));
+		if (!queue)
+			return (0);
 		queue->front = NULL;
 		queue->rear = NULL;
+
 		_enqueue(queue, *root);
 		while (queue->front)
 		{
