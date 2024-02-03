@@ -50,6 +50,7 @@ int heap_extract(heap_t **root)
 		siftDown(root);
 		return (value);
 	}
+	freeAll(queue);
 	return (0);
 }
 

@@ -11,14 +11,19 @@
 
 int *heap_to_sorted_array(heap_t *heap, size_t *size)
 {
-	int *array = NULL, i;
+	int *array = NULL, i = -1;
 
 	if (heap)
 	{
-		array = malloc(sizeof(int) * (*size + 1));
+		array = malloc(sizeof(int) * (1024));
 
-		for (i = 0; i < (int)(*size - 1); i++)
+		do {
+			i++;
 			array[i] = heap_extract(&heap);
+
+		} while (array[i]);
+
+		*size = i;
 	}
 	return (array);
 }
