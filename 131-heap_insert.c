@@ -20,6 +20,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		if (!*root)
 		{
 			*root = binary_tree_node(NULL, value);
+			freeAll(queue);
 			return (*root);
 		}
 		enqueue(queue, *root);
