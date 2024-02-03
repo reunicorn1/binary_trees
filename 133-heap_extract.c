@@ -38,6 +38,7 @@ int heap_extract(heap_t **root)
 		if (*root == node)
 		{
 			*root = NULL;
+			free(node);
 			return (value);
 		}
 		_switch_node(root, &node);
