@@ -12,6 +12,7 @@ void _freeAll(queue_t *queue);
  * @root: A double pointer to the root node
  * Return: the value of the node that got extracted
  */
+
 int heap_extract(heap_t **root)
 {
 	queue_t *queue = (queue_t *)malloc(sizeof(queue_t));
@@ -48,9 +49,9 @@ int heap_extract(heap_t **root)
 		siftDown(root);
 		return (value);
 	}
-	freeAll(queue);
 	return (0);
 }
+
 /**
  * siftDown - Builds the maxheap using the sift-down heap sort algorithm
  * @node: pointer to the root of the tree to be installed down
@@ -81,6 +82,7 @@ void siftDown(heap_t **node)
 		}
 	}
 }
+
 /**
  * _switch_node - This function switches between two nodes in the tree
  * @a: A Pointer to the first node to be switched
