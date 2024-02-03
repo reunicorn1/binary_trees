@@ -13,10 +13,11 @@ heap_t *heap_insert(heap_t **root, int value)
 	queue_t *queue = (queue_t *)malloc(sizeof(queue_t));
 	heap_t *node;
 
-	queue->front = NULL;
-	queue->rear = NULL;
-	if (root)
+	if (root && queue)
 	{
+		queue->front = NULL;
+		queue->rear = NULL;
+
 		if (!*root)
 		{
 			*root = binary_tree_node(NULL, value);
