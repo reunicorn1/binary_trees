@@ -1,6 +1,5 @@
 #include "binary_trees.h"
 
-
 int heap_extract(heap_t **root);
 void siftDown(heap_t **node);
 void _switch_node(heap_t **a, heap_t **b);
@@ -23,7 +22,6 @@ int heap_extract(heap_t **root)
 	{
 		queue->front = NULL;
 		queue->rear = NULL;
-
 		_enqueue(queue, *root);
 		while (queue->front)
 		{
@@ -53,7 +51,6 @@ int heap_extract(heap_t **root)
 	freeAll(queue);
 	return (0);
 }
-
 /**
  * siftDown - Builds the maxheap using the sift-down heap sort algorithm
  * @node: pointer to the root of the tree to be installed down
@@ -84,7 +81,6 @@ void siftDown(heap_t **node)
 		}
 	}
 }
-
 /**
  * _switch_node - This function switches between two nodes in the tree
  * @a: A Pointer to the first node to be switched
@@ -98,7 +94,6 @@ void _switch_node(heap_t **a, heap_t **b)
 	(*b)->n = (*a)->n ^ (*b)->n;
 	(*a)->n = (*a)->n ^ (*b)->n;
 }
-
 /**
  * _enqueue - adds a new node to the queue
  * @queue: a pointer to the head pf the list
@@ -106,7 +101,6 @@ void _switch_node(heap_t **a, heap_t **b)
  *
  * Return: Nothing.
  */
-
 void _enqueue(queue_t *queue, const binary_tree_t *data)
 {
 	queue_node_t *newNode = (queue_node_t *)malloc(sizeof(queue_node_t));
@@ -126,14 +120,12 @@ void _enqueue(queue_t *queue, const binary_tree_t *data)
 		queue->rear = newNode;
 	}
 }
-
 /**
  * _dequeue - removed the top element of the stack
  * @queue: a pointer to the head of the list
  *
  * Return: the node that was stored.
  */
-
 binary_tree_t *_dequeue(queue_t *queue)
 {
 	binary_tree_t *data;
@@ -141,14 +133,12 @@ binary_tree_t *_dequeue(queue_t *queue)
 
 	if (!queue->front)
 		return (NULL);
-
 	data = queue->front->data;
 	temp = queue->front;
 	queue->front = queue->front->next;
 	free(temp);
 	return (data);
 }
-
 /**
  * _freeAll - frees all allocated memory in cases of failure and exits
  * @queue: a pointer to the head of the stack
