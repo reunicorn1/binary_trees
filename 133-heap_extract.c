@@ -64,27 +64,26 @@ int heap_extract(heap_t **root)
  */
 void siftDown(heap_t **node)
 {
+	heap_t *max = *node;
+
 	if ((!(*node) || (*node)->right || (*node)->left))
 	{
 		if ((*node)->right)
 		{
-			if ((*node)->left->n > (*node)->right->n)
+			if (max->n < (*node)->right->n)
+				max  = (*node)->right;
+			if (max->n < (*node)->left->n)
+				max = (*node)->left;
+			if (max != *node)
 			{
-				_switch_node(node, &(*node)->left);
-				siftDown(&(*node)->left);
-			}
-			else
-			{
-				_switch_node(node, &(*node)->right);
-				siftDown(&(*node)->right);
+				_switch_node(node, &max);
+				siftDown(&max);
 			}
 		}
 		else if ((*node)->left->n > (*node)->n)
-		{
 			_switch_node(node, &(*node)->left);
-			siftDown(&(*node)->left);
-		}
 	}
+	return;
 }
 
 /**
