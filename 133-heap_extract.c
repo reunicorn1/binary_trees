@@ -83,7 +83,6 @@ void siftDown(heap_t **node)
 		else if ((*node)->left->n > (*node)->n)
 			_switch_node(node, &(*node)->left);
 	}
-	return;
 }
 
 /**
