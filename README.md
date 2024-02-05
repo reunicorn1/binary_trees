@@ -91,10 +91,6 @@ The AVL tree maintains an  **O(log n)** height, ensuring that operations like in
        
 
 
-
-
-
-
 ### Max Heap
 
 A Max Heap is a specialized tree-based data structure that satisfies the heap property. In a Max Heap, for any given node I, the value of I is greater than or equal to the values of its children. This property must be true across the entire tree. In other words, the parent node has a value greater than or equal to its children nodes, and the key of the root node is the largest among all other nodes. This property makes Max Heap useful for algorithms like Heap Sort, or for creating a priority queue. 
@@ -141,7 +137,7 @@ To use the functions provided by this project, follow these steps:
 1.  **Clone the Repository:**
 
 ```bash
-$ git clone <https://github.com/reunicorn1/binary_trees.git
+$ git clone https://github.com/reunicorn1/binary_trees.git
 ```
 
 1.  **Navigate to the Project Directory:**
