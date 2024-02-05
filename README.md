@@ -37,15 +37,15 @@ Non Linear data structures on the other hand, are those in which data elements a
 
 ![1.png](https://i.postimg.cc/L8G0nVsv/1.png)
 
-#### Full Binary Tree
+### Full Binary Tree
 
 A full binary tree, also known as a proper or plane binary tree, is a type of binary tree where every node has either 0 or 2 children. That means, in a full binary tree, a node cannot have only one child. This property ensures that every level of the tree is fully filled.
 
-#### Complete Binary Tree
+### Complete Binary Tree
 
 A complete binary tree is a special type of binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible. This means that you fill the nodes from left to right at each level before moving on to the next level. This property makes complete binary trees ideal for implementation as arrays. The parent-child relationship can be defined in terms of indices, which can make certain operations more efficient.
 
-#### Perfect Binary Tree
+### Perfect Binary Tree
 
 A perfect binary tree is a type of binary tree where all interior nodes have two children and all leaves have the same depth or same level. In other words, all levels of the tree are fully filled. This makes it 'perfect'. It's important to note that all perfect binary trees are also complete and full binary trees, but the reverse is not necessarily true.
 
@@ -56,7 +56,7 @@ A degenerate (or pathological) binary tree is a type of binary tree where every 
 
 ![2.png](https://i.postimg.cc/3JdBmDVq/2.png)
 
-#### Traversing
+### Traversing
 
 There are several ways to traverse a binary tree:
 
@@ -71,14 +71,14 @@ There are several ways to traverse a binary tree:
 4.  `Level-order Traversal:`  Also known as Breadth-First Search (BFS), this method visits all the nodes of a level before going to the next level. This is often used for searching a tree. </br></br>
 ![1-a-U13-AOq-Rn831j-JL38-JWIzg.gif](https://i.postimg.cc/DwBF4HGF/1-a-U13-AOq-Rn831j-JL38-JWIzg.gif)
 
-#### Binary Search Tree
+### Binary Search Tree
 
 A Binary Search Tree (BST) is a type of binary tree with a special property: for each node, all elements in its left subtree are less than the node, and all elements in its right subtree are greater than the node. This property makes BSTs useful for efficiently performing operations like search, insert, delete, etc. However, keep in mind that the efficiency of these operations in a BST depends on the height of the tree. In the best case, the tree is balanced and the height is log(n), where n is the number of nodes. In the worst case, the tree is skewed (all nodes are on one side of the root) and the height is n.
 
 -   I**n the best case**, when the tree is balanced, the height is log(n), where n is the number of nodes. So, the time complexity for search, insertion, and deletion is  **O(log n).**
 -   I**n the worst case**, when the tree is skewed (all nodes are on one side of the root), the height is n. So, the time complexity for search, insertion, and deletion is  **O(n).**
 
-#### AVL Tree
+### AVL Tree
 
 An AVL tree, named after its inventors Adelson-Velsky and Landis, is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one. If at any time they differ by more than one, rebalancing is done to restore this property. Rebalancing involves performing certain types of rotations on the tree. These are known as left rotation, right rotation, left-right rotation, and right-left rotation. 
 The AVL tree maintains an  **O(log n)** height, ensuring that operations like insertion, deletion, and search can be done in logarithmic time.
@@ -95,7 +95,7 @@ The AVL tree maintains an  **O(log n)** height, ensuring that operations like in
 
 
 
-#### Max Heap
+### Max Heap
 
 A Max Heap is a specialized tree-based data structure that satisfies the heap property. In a Max Heap, for any given node I, the value of I is greater than or equal to the values of its children. This property must be true across the entire tree. In other words, the parent node has a value greater than or equal to its children nodes, and the key of the root node is the largest among all other nodes. This property makes Max Heap useful for algorithms like Heap Sort, or for creating a priority queue. 
 
@@ -105,27 +105,27 @@ The time complexity for operations like insertion and deletion in a Max Heap is 
 
 This project provides a comprehensive set of C functions for binary trees, covering basic operations, traversal methods, and specialized functionalities for binary search trees (BSTs), AVL trees, and max binary heaps.
 
-#### Basic Operations:
+### Basic Operations:
 
 -   **New Node, Insertion, Deletion:**  Create new nodes, insert them as children, and delete specified nodes.
 -   **Leaf and Root Check:**  Determine if a node is a leaf or the root of the tree.
 -   **Traversal:**  Perform pre-order, in-order, post-order, and level-order traversals.
 -   **Tree Properties:**  Calculate height, depth, size, number of leaves and nodes, balance factor, and check for fullness and perfection.
 
-#### Binary Search Trees (BSTs):
+### Binary Search Trees (BSTs):
 
 -   **Is BST Check:**  Verify if the tree is a binary search tree.
 -   **BST Operations:**  Insertion, search, and removal of nodes.
 -   **Array to BST Conversion:**  Construct a BST from an array.
 -   **Big O Analysis:**  Analyze time complexity for BST operations.
 
-#### AVL Trees:
+### AVL Trees:
 
 -   **Is AVL Check:**  Determine if the tree is an AVL tree.
 -   **AVL Operations:**  Insertion, removal, and array to AVL tree conversion.
 -   **Big O Analysis:**  Analyze time complexity for AVL tree operations.
 
-#### Max Binary Heap:
+### Max Binary Heap:
 
 -   **Is Binary Heap Check:**  Verify if the tree is a max binary heap.
 -   **Heap Operations:**  Insertion, extraction of maximum element, and sorting.
