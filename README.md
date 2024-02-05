@@ -1,155 +1,180 @@
 # binary_trees
-Binary tree is a type of data structure in computer science that has at most two children for each parent node
+
+![image-57.png](https://i.postimg.cc/DZQ2CZDk/image-57.png)
+
+## Table of Contents 
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Installation & Usage](#installation-&-usage)
+4. [Contributing](#contributing)
+5. [License](#license)
+
+## Introduction
 
 Data structures can be linear or non linear. In linear data structures, data elements are arranged sequentially, and each element is connected to its previous and next element. Examples include arrays, linked lists, stacks, and queues.
 
-Non Linear data structures on the other hand, re those in which data elements are not arranged in a sequential manner. They are connected in such a way that each element is connected to two or more other elements. Examples include trees and graphs.
+Non Linear data structures on the other hand, are those in which data elements are not arranged in a sequential manner. They are connected in such a way that each element is connected to two or more other elements. Examples include trees and graphs.
 
-> Trees can be defined as a collection of entities (nodes) linked together to stimulate a hierarchy.
-> 
+**A binary tree** is a type of tree data structure in which each node has at most two children, referred to as the left child and the right child. This makes binary trees especially useful for algorithms that search and sort data, as the structure allows for efficient operations.
 
-> Binary trees: are trees where each node it contain have at most 2 children.
-> 
+`A leaf node`  is considered a node which has no children.
 
-## Properties of a Binary Tree
+`Path:`  the path is the sequence of consecutive edges from source node to destination node.
 
-![new-binary-tree.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/8d7a3c9c-fc2d-4793-8749-a5df6f848872/00b4f86f-821f-4104-ae8d-6482c282f4f9/new-binary-tree.png)
+`Ancestor:`  is any predecessor node on the path from root to that node.
 
-In the above example, the root of the trees is the value 2, a node is considered any value in the hierarchy of the tree.
+`Descendent:`  any successor node on the path from that node to leaf node.
 
-the value 2 is the parent node of the values 7 and 5 which are the children nodes, and 6 is the parent node of the values 5 and 11. 
+`Sibling:`  children of the same parent.
 
-`A leaf node` **is considered a node which has no children**, in the above example, 2, 5, 11, 4 are all considered leaf nodes. And therefore a non leaf node is every other node except these as thers have their own respective children.
+`Depth of node:`  the length of the path from root to that node.
 
-`Path:` **the path is the sequence of consecutive edges from source node to destination node.**
+`Height of node:`  is the number of edges in the longest path from that node to a leaf.
 
-`Ancestor:` **is any predecessor node on the path from root to that node.**
 
-6 = 7, 2
+`Level of a node:` is equal to the height of a tree, and level of a node is equal to the depth of a node.
 
-`Descendent:` **any successor node on the path from that node to leaf node**
 
-7 = 2, 6, 5, 11
+![1.png](https://i.postimg.cc/L8G0nVsv/1.png)
 
-Common ancestors between 6 and 9 are only the value 2.
+#### Full Binary Tree
 
-`Sibling:` children of the same parent
+A full binary tree, also known as a proper or plane binary tree, is a type of binary tree where every node has either 0 or 2 children. That means, in a full binary tree, a node cannot have only one child. This property ensures that every level of the tree is fully filled.
 
-`Degree:` **degree of node is n.o of children of that node.** In a binary tree ****the maximum degree of a node is 2, and leaf nodes have the degree of zero.
+#### Complete Binary Tree
 
-`Depth of node:` **the length of the path from root to that node.** The depth of 6 is 2, and the depth of the root 2 is zero always. 
+A complete binary tree is a special type of binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible. This means that you fill the nodes from left to right at each level before moving on to the next level. This property makes complete binary trees ideal for implementation as arrays. The parent-child relationship can be defined in terms of indices, which can make certain operations more efficient.
 
-<aside>
-🌳 Level of a node is equal to the height of a tree, and level of a node is equal to the depth of a node.
+#### Perfect Binary Tree
 
-</aside>
+A perfect binary tree is a type of binary tree where all interior nodes have two children and all leaves have the same depth or same level. In other words, all levels of the tree are fully filled. This makes it 'perfect'. It's important to note that all perfect binary trees are also complete and full binary trees, but the reverse is not necessarily true.
 
-`Height of node:` **is the number of edges in the longest path from that node to a leaf.** the height of 9 is 1, and the height of 7 is two.
+#### Degenerate Binary Tree
 
-<aside>
-🌳 nodes of a tree equals n - 1 edges
+A degenerate (or pathological) binary tree is a type of binary tree where every parent node has only one child. This means it's more like a linked list rather than a tree. In this case, the tree doesn't provide the benefits of a binary tree structure, such as efficient search, because each node only points to one other node.
 
-</aside>
 
-<aside>
-🌳 The number of nodes possible at any level i equals 2 ^ i. And the maximum number of nodes in a binary of height h equals 2 ^ (h + 1)  -1, and the minimum number of nodes is h + 1
+![2.png](https://i.postimg.cc/3JdBmDVq/2.png)
 
-</aside>
+#### Traversing
 
-### `Full Binary Tree`
+There are several ways to traverse a binary tree:
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/8d7a3c9c-fc2d-4793-8749-a5df6f848872/13d1f073-57f4-4f74-9327-80baa54d1343/Untitled.png)
+1.  `In-order Traversal`: In this method, you first traverse the left subtree, then visit the root node, and finally traverse the right subtree. This is often used for binary search trees as it visits nodes in ascending order.</br></br>
+![Inorder-traversal.gif](https://i.postimg.cc/hG1DsvNF/Inorder-traversal.gif)
 
-Each node contains two children or zero (all or none), or this can be defined as all nodes having two children except the leaf nodes having none.
+2.  `Pre-order Traversal`: Here, you visit the root node first, then traverse the left subtree, and finally the right subtree. This is often used for copying or cloning a tree. </br></br>
+![Preorder-traversal.gif](https://i.postimg.cc/jqGpWKky/Preorder-traversal.gif)
 
-<aside>
-🌳 Number of leaf nodes equals the number of internal nodes + 1
+3.  `Post-order Traversal:`  In this method, you traverse the left subtree first, then the right subtree, and finally visit the root node. This is often used for deleting a tree.</br></br>![Postorder-traversal.gif](https://i.postimg.cc/HLkYSdmV/Postorder-traversal.gif)
 
-</aside>
+4.  `Level-order Traversal:`  Also known as Breadth-First Search (BFS), this method visits all the nodes of a level before going to the next level. This is often used for searching a tree. </br></br>
+![1-a-U13-AOq-Rn831j-JL38-JWIzg.gif](https://i.postimg.cc/DwBF4HGF/1-a-U13-AOq-Rn831j-JL38-JWIzg.gif)
 
-### `Complete Binary Tree`
+#### Binary Search Tree
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/8d7a3c9c-fc2d-4793-8749-a5df6f848872/0b381006-ba96-4ec6-9dc5-708c6f0c0c2e/Untitled.png)
+A Binary Search Tree (BST) is a type of binary tree with a special property: for each node, all elements in its left subtree are less than the node, and all elements in its right subtree are greater than the node. This property makes BSTs useful for efficiently performing operations like search, insert, delete, etc. However, keep in mind that the efficiency of these operations in a BST depends on the height of the tree. In the best case, the tree is balanced and the height is log(n), where n is the number of nodes. In the worst case, the tree is skewed (all nodes are on one side of the root) and the height is n.
 
-All levels are completely filled (except possibly the last level) and the last level had nodes as left as possible  
+-   I**n the best case**, when the tree is balanced, the height is log(n), where n is the number of nodes. So, the time complexity for search, insertion, and deletion is  **O(log n).**
+-   I**n the worst case**, when the tree is skewed (all nodes are on one side of the root), the height is n. So, the time complexity for search, insertion, and deletion is  **O(n).**
 
-### `Perfect Binary Tree`
+#### AVL Tree
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/8d7a3c9c-fc2d-4793-8749-a5df6f848872/f863e3cd-57c0-4e5e-943d-efe9613178ab/Untitled.png)
+An AVL tree, named after its inventors Adelson-Velsky and Landis, is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one. If at any time they differ by more than one, rebalancing is done to restore this property. Rebalancing involves performing certain types of rotations on the tree. These are known as left rotation, right rotation, left-right rotation, and right-left rotation. 
+The AVL tree maintains an  **O(log n)** height, ensuring that operations like insertion, deletion, and search can be done in logarithmic time.
+|               |         Mode of Rotation     |
+|----------------|-------------------------------|
+|**Left-Left case**|If the balance factor of the unbalanced node is positive and the balance factor of its left child is also positive (or zero), a right rotation on the unbalanced node is needed.|
+|**Right-Right case**|If the balance factor of the unbalanced node is negative and the balance factor of its right child is also negative (or zero), a left rotation on the unbalanced node is needed.
+|**Left-Right case**|If the balance factor of the unbalanced node is positive and the balance factor of its left child is negative, a left rotation on the left child followed by a right rotation on the unbalanced node is needed.|
+|**Right-Left case**|If the balance factor of the unbalanced node is negative and the balance factor of its right child is positive, a right rotation on the right child followed by a left rotation on the unbalanced node is needed.
+       
 
-All internal nodes have 2 children and all leaves are at the same level
 
-<aside>
-🌳 Every perfect binary tree is also a complete and a full binary tree.
 
-</aside>
 
-### `Degenerate Binary Tree`
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/8d7a3c9c-fc2d-4793-8749-a5df6f848872/3da06667-36ae-4ca0-b580-635708bd9b19/Untitled.png)
 
-All nodes have only one child, if it includes children on the left it’s called **left-skewed binary tree**, and if they’re all on the right it’s called **right skewed binary tree**.
+#### Max Heap
 
-|  | Max Nodes | Min Nodes | Max Height | Min Height |
-| --- | --- | --- | --- | --- |
-| Binary Tree | 2^{(h+1)}-1 | h + 1 | [log _{2}(n+1)]-1 | n -1  |
-| Full Binary Tree | 2^{(h+1)}-1 | 2h + 1 | [log _{2}(n+1)]-1 | (n-1) / 2 |
-| Perfect Binary Tree | 2^{(h+1)}-1 | 2^h  | [log _{2}(n+1)]-1 | log n |
+A Max Heap is a specialized tree-based data structure that satisfies the heap property. In a Max Heap, for any given node I, the value of I is greater than or equal to the values of its children. This property must be true across the entire tree. In other words, the parent node has a value greater than or equal to its children nodes, and the key of the root node is the largest among all other nodes. This property makes Max Heap useful for algorithms like Heap Sort, or for creating a priority queue. 
 
-## Traversal
+The time complexity for operations like insertion and deletion in a Max Heap is  **O(log n)**, where n is the number of nodes. This is because these operations involve 'heapifying' the tree to maintain the heap property, which takes logarithmic time.
 
-### **`Inorder Traversal`**
+## Features
 
-left → root → right
+This project provides a comprehensive set of C functions for binary trees, covering basic operations, traversal methods, and specialized functionalities for binary search trees (BSTs), AVL trees, and max binary heaps.
 
-### `Preorder Traversal`
+#### Basic Operations:
 
-root → left → right
+-   **New Node, Insertion, Deletion:**  Create new nodes, insert them as children, and delete specified nodes.
+-   **Leaf and Root Check:**  Determine if a node is a leaf or the root of the tree.
+-   **Traversal:**  Perform pre-order, in-order, post-order, and level-order traversals.
+-   **Tree Properties:**  Calculate height, depth, size, number of leaves and nodes, balance factor, and check for fullness and perfection.
 
-### `Postorder Traversal`
+#### Binary Search Trees (BSTs):
 
-left → right → root
+-   **Is BST Check:**  Verify if the tree is a binary search tree.
+-   **BST Operations:**  Insertion, search, and removal of nodes.
+-   **Array to BST Conversion:**  Construct a BST from an array.
+-   **Big O Analysis:**  Analyze time complexity for BST operations.
 
-A binary search tree (BST) is also called an ordered or sorted binary tree, where all internal nodes are greater than their respective node’s left subtree and less than the the ones in its right subtree.  
+#### AVL Trees:
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/8d7a3c9c-fc2d-4793-8749-a5df6f848872/ebc24417-d066-4b87-859f-205d219f2dea/Untitled.png)
+-   **Is AVL Check:**  Determine if the tree is an AVL tree.
+-   **AVL Operations:**  Insertion, removal, and array to AVL tree conversion.
+-   **Big O Analysis:**  Analyze time complexity for AVL tree operations.
 
-## AVL Tree
+#### Max Binary Heap:
 
-In AVL trees, the difference between the heights of left and right subtrees, known as the **Balance Factor**, must be at most one. Once the difference exceeds one, the tree automatically executes the balancing algorithm until the difference becomes one again.
+-   **Is Binary Heap Check:**  Verify if the tree is a max binary heap.
+-   **Heap Operations:**  Insertion, extraction of maximum element, and sorting.
+-   **Array to Binary Heap Conversion:**  Construct a max binary heap from an array.
+-   **Big O Analysis:**  Analyze time complexity for max binary heap operations.
 
-when you do an insertion or deletion and need to do tree rotations, those rotations won't appear in random spots in the tree. They'll always appear along the access path you took when inserting or deleting the node.
+These functions provide developers with efficient tools to manipulate and analyze binary trees, catering to a wide range of tree types and use cases.
 
-let's see what happens when we insert 3. This places the 3 here:
+## Installation & Usage
 
-![Screenshot 2024-02-01 at 7.51.00 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/8d7a3c9c-fc2d-4793-8749-a5df6f848872/83482825-0340-44e5-bc88-fb658a679dda/Screenshot_2024-02-01_at_7.51.00_PM.png)
+To use the functions provided by this project, follow these steps:
 
-Notice that I've marked all nodes on the access path with a ?, since we're no longer sure what their balance factors are.
+1.  **Clone the Repository:**
 
-![Screenshot 2024-02-01 at 7.53.42 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/8d7a3c9c-fc2d-4793-8749-a5df6f848872/e5e55dde-df8b-4011-9757-5e9a90ad78d1/Screenshot_2024-02-01_at_7.53.42_PM.png)
+```bash
+$ git clone <https://github.com/reunicorn1/binary_trees.git
+```
 
-we can see that we're in the case where we have a balance factor of +2 where the left child has a balance factor of +1. This means that we do a right rotation and pull the 7 above the 9, as shown here:
+1.  **Navigate to the Project Directory:**
 
-![Screenshot 2024-02-01 at 7.54.05 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/8d7a3c9c-fc2d-4793-8749-a5df6f848872/db2ca49b-9b3f-4cad-b4e5-16b18acbbd10/Screenshot_2024-02-01_at_7.54.05_PM.png)
+```bash
+$ cd binary_trees
+```
 
-Notice that when we did this fixup procedure, we didn't have to look over the entire tree. Instead, all we needed to do was look along the access path and check each node there. Typically, when implementing an AVL tree, your insertion procedure will do the following:
+1.  **Compile the Source Code:**
 
-- **If the tree is null:**
-    - Insert the node with balance factor 0.
-    - Return that the tree height has increased by 1.
-- **Otherwise:**
-    - If the value to insert matches the current node, do nothing.
-    - Otherwise, recursively insert the node into the proper subtree and get the amount that the tree height has changed by.
-    - Update the balance factor of this node based on the amount that the subtree height changed.
-    - If this mandates a series of rotations, perform them.
-    - Return the resulting change in the height of this tree.
+```bash
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 0-main.c 0-binary_tree_node.c -o 0-node
+```
 
-Since all these operations are local, the total work done is based purely on the length of the access path, which in this case is O(log n) because AVL trees are always balanced.
+This command compiles the source code into an executable named  `0-node`.
 
-In an AVL tree, **the rotation is performed at the first unbalanced node that you encounter when moving up from the newly inserted or removed node towards the root.** The direction of rotation depends on whether the imbalance is left-heavy or right-heavy.
+1.  **Run the Executable:**
 
-| Left-Left case | If the balance factor of the unbalanced node is positive and the balance factor of its left child is also positive (or zero), a right rotation on the unbalanced node is needed. |
-| --- | --- |
-| Right-Right case | If the balance factor of the unbalanced node is negative and the balance factor of its right child is also negative (or zero), a left rotation on the unbalanced node is needed. |
-| Left-Right case | If the balance factor of the unbalanced node is positive and the balance factor of its left child is negative, a left rotation on the left child followed by a right rotation on the unbalanced node is needed. |
-| Right-Left case | If the balance factor of the unbalanced node is negative and the balance factor of its right child is positive, a right rotation on the right child followed by a left rotation on the unbalanced node is needed. |
+```bash
+$ ./0-node
+```
+
+## Contributing
+
+We welcome contributions from the community to enhance this project. Here's how you can contribute:
+
+1.  **Fork the Repository:**  Fork the repository, clone it to your local machine, and make your changes.
+2.  **Open a Pull Request:**  Once your changes are ready, open a pull request from your fork to the original repository.
+3.  **Review and Approval:**  Your pull request will be reviewed, and upon approval, your changes will be merged into the main project.
+
+
+Thank you for your contributions! We appreciate your efforts in making this project better for everyone.
+
+## License
+
+The Binary_trees project is open-source and released under the MIT License. This license grants permission to anyone to use, modify, and distribute the software, subject to the conditions outlined in the license agreement.
